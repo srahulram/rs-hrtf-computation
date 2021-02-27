@@ -1,0 +1,16 @@
+# Misc. Files
+.DS_Store
+
+# MATLAB Files
+*.m~
+Software/MATLAB/dependencies/*/
+!Software/MATLAB/dependencies/3D3A-Research-Lite-Toolbox
+!Software/MATLAB/dependencies/hatchfill2_r8
+
+# Data Files
+Data/*/
+!Data/Computation
+
+# Plot Files
+Plots/*/
+!Plots/Computation
