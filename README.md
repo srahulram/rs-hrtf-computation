@@ -4,4 +4,4 @@ Collection of data, plots, and MATLAB software for computing the rigid-sphere he
 
 R. Sridhar and E. Y. Choueiri, "Optimal Series Truncation of the Rigid-Sphere Head-Related Transfer Function for Accurate Binaural Perception," J. Audio Eng. Soc., 2021 (to appear)
 
-https://zenodo.org/badge/342893283.svg
+<a href="https://zenodo.org/badge/latestdoi/342893283"><img src="https://zenodo.org/badge/342893283.svg" alt="DOI"></a>
