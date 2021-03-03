@@ -406,7 +406,7 @@ clearvars varstokeep varstoremove varsafter newvars
 % Specify plot file name
 plotFileName = 'abs_ITD_err_vs_rho_grayscale'; % CHANGE AS NEEDED
 
-exportFigure(fig1,fullfile(plotsPath,[plotFileName,'.pdf']))
+exportFigure(fig1,fullfile(plotsPath,'Computation',[plotFileName,'.eps']))
 
 %% Plot absolute ILD error as a function of rho
 
@@ -482,4 +482,4 @@ clearvars varstokeep varstoremove varsafter newvars
 % Specify plot file name
 plotFileName = 'abs_ILD_err_vs_rho_grayscale'; % CHANGE AS NEEDED
 
-exportFigure(fig2,fullfile(plotsPath,[plotFileName,'.pdf']))
+exportFigure(fig2,fullfile(plotsPath,'Computation',[plotFileName,'.eps']))

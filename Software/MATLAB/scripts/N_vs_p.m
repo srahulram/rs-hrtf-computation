@@ -148,4 +148,4 @@ clearvars varstokeep varstoremove varsafter newvars
 % Specify plot file name
 plotFileName = 'N_vs_p_r-inf_grayscale'; % CHANGE AS NEEDED
 
-exportFigure(fig1,fullfile(plotsPath,'Computation',[plotFileName,'.pdf']))
+exportFigure(fig1,fullfile(plotsPath,'Computation',[plotFileName,'.eps']))

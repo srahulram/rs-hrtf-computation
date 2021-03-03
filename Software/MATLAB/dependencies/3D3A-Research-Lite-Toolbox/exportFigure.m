@@ -1,7 +1,9 @@
 function exportFigure(FIG,FPATH)
-%EXPORTFIGURE Export a figure to a PDF.
+%EXPORTFIGURE Export a figure.
 %   EXPORTFIGURE(FIG,FPATH) exports the figure specified by the handle FIG
-%   to a PDF file with path specified by FPATH.
+%   to the path specified by FPATH. The extension to the file name
+%   determines the export format. Valid extensions are '.pdf' and '.eps'. 
+%   If a valid extension is not provided, a '.eps' is exported by default.
 
 %   =======================================================================
 %   This file is part of the 3D3A Research Lite Toolbox.
@@ -44,10 +46,19 @@ if exist(FDIR,'dir') ~= 7
     mkdir(FDIR);
 end
 
-if ~strcmpi(FEXT,'.pdf')
-    warning(['Specified file name does not have .pdf extension.',...
-        ' Exporting to pdf.'])
-    FEXT = '.pdf';
+switch lower(FEXT)
+    case '.pdf'
+        exportTag = '-dpdf';
+        renameFlag = false;
+    case '.eps'
+        exportTag = '-dpsc'; % To prevent tight bounding box
+        renameFlag = true; 
+    otherwise
+        warning(['Specified file name does not have a valid extension.',...
+            ' Exporting to eps.'])
+        FEXT = '.eps';
+        exportTag = '-dpsc';
+        renameFlag = true;
 end
 
 % Set additional figure properties for exporting
@@ -58,10 +69,23 @@ FIG.PaperUnits = 'centimeters';
 FIG.PaperPositionMode = 'auto';
 FIG.PaperSize = [totalPlotWidth+0.1,totalPlotHeight+0.1];
 
-% Export figure to pdf
-print(FIG,fullfile(FDIR,[FNAME,FEXT]),'-dpdf');
+% Export figure
+if renameFlag
+    tempExportPath = fullfile(FDIR,[FNAME,'.ps']);
+    print(FIG,tempExportPath,exportTag);
+    
+    exportPath = fullfile(FDIR,[FNAME,FEXT]);
+    [status,~,~] = movefile(tempExportPath,exportPath,'f');
+else
+    exportPath = fullfile(FDIR,[FNAME,FEXT]);
+    print(FIG,exportPath,exportTag);
+    
+    status = true;
+end
 
-fprintf('Figure exported to file:\n')
-fprintf('%s\n',rel2abs(fullfile(FDIR,[FNAME,FEXT])));
+if status
+    fprintf('Figure exported to file:\n')
+    fprintf('%s\n',rel2abs(exportPath));
+end
 
 end

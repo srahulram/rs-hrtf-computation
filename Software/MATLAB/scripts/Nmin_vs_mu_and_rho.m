@@ -184,4 +184,4 @@ clearvars varstokeep varstoremove varsafter newvars
 % Specify plot file name
 plotFileName = 'N-min_vs_mu-and-rho_grayscale'; % CHANGE AS NEEDED
 
-exportFigure(fig1,fullfile(plotsPath,'Computation',[plotFileName,'.pdf']))
+exportFigure(fig1,fullfile(plotsPath,'Computation',[plotFileName,'.eps']))

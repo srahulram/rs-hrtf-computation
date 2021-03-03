@@ -209,4 +209,4 @@ clearvars varstokeep varstoremove varsafter newvars
 % Specify plot file name
 plotFileName = 'abs_ITD_err_vs_p_grayscale'; % CHANGE AS NEEDED
 
-exportFigure(fig1,fullfile(plotsPath,'Computation',[plotFileName,'.pdf']))
+exportFigure(fig1,fullfile(plotsPath,'Computation',[plotFileName,'.eps']))
