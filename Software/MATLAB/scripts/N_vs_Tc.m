@@ -145,7 +145,7 @@ end
 % Clear variables generated only by this cell
 varsafter = who;
 newvars = setdiff(varsafter,varsbefore);
-varstokeep = {'fig1','p1','a1','a2'};
+varstokeep = {'fig1','p1','a1','a2','finalPlotData'};
 varstoremove = setdiff(newvars,varstokeep);
 clear(varstoremove{:});
 clearvars varstokeep varstoremove varsafter newvars
@@ -156,6 +156,21 @@ clearvars varstokeep varstoremove varsafter newvars
 plotFileName = 'N_vs_Tc_r-inf_grayscale'; % CHANGE AS NEEDED
 
 exportFigure(fig1,fullfile(plotsPath,'Computation',[plotFileName,'.eps']))
+
+%% (Optional) Export plot data
+%
+% This is for generating plots using another piece of software (e.g.,
+% Mathematica)
+
+% Specify file name for exporting plot data
+plotDataFileName = 'N_vs_Tc_r-inf_plotdata'; % CHANGE AS NEEDED
+
+xData = thVec.';
+yData = finalPlotData;
+save(fullfile(dataPath,'Plot Data',[plotDataFileName,'.mat']),'xData',...
+    'yData');
+
+clearvars xData yData
 
 %% Observations
 %

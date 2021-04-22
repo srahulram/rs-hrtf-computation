@@ -210,3 +210,19 @@ clearvars varstokeep varstoremove varsafter newvars
 plotFileName = 'abs_ILD_err_vs_p_grayscale'; % CHANGE AS NEEDED
 
 exportFigure(fig1,fullfile(plotsPath,'Computation',[plotFileName,'.eps']))
+
+%% (Optional) Export plot data
+%
+% This is for generating plots using another piece of software (e.g.,
+% Mathematica)
+
+% Specify file name for exporting plot data
+plotDataFileName = 'abs_ILD_err_vs_p_plotdata'; % CHANGE AS NEEDED
+
+xData = pVec.';
+yDataMean = meanDistVec;
+yDataMax = maxDistVec;
+save(fullfile(dataPath,'Plot Data',[plotDataFileName,'.mat']),'xData',...
+    'yDataMean','yDataMax');
+
+clearvars xData yDataMean yDataMax

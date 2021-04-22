@@ -483,3 +483,21 @@ clearvars varstokeep varstoremove varsafter newvars
 plotFileName = 'abs_ILD_err_vs_rho_grayscale'; % CHANGE AS NEEDED
 
 exportFigure(fig2,fullfile(plotsPath,'Computation',[plotFileName,'.eps']))
+
+%% (Optional) Export plot data
+%
+% This is for generating plots using another piece of software (e.g.,
+% Mathematica)
+
+% Specify file name for exporting plot data
+plotDataFileName = 'ITD_and_ILD_err_vs_rho_plotdata'; % CHANGE AS NEEDED
+
+xData = [rhoVec(1:rVecLen-1);20];
+yData1Mean = meanIPDDistMat(:,[1,3]);
+yData1Max = maxIPDDistMat(:,[1,3]);
+yData2Mean = meanILDDistMat(:,[1,3]);
+yData2Max = maxILDDistMat(:,[1,3]);
+save(fullfile(dataPath,'Plot Data',[plotDataFileName,'.mat']),'xData',...
+    'yData1Mean','yData1Max','yData2Mean','yData2Max');
+
+clearvars xData yData1Mean yData1Max yData2Mean yData2Max

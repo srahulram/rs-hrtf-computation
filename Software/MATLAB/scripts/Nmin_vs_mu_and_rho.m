@@ -185,3 +185,22 @@ clearvars varstokeep varstoremove varsafter newvars
 plotFileName = 'N-min_vs_mu-and-rho_grayscale'; % CHANGE AS NEEDED
 
 exportFigure(fig1,fullfile(plotsPath,'Computation',[plotFileName,'.eps']))
+
+%% (Optional) Export plot data
+%
+% This is for generating plots using another piece of software (e.g.,
+% Mathematica)
+
+% Specify file name for exporting plot data
+plotDataFileName = 'N-min_vs_mu-and-rho_plotdata'; % CHANGE AS NEEDED
+
+xData1 = muVec(plotPtIndxs);
+xData2 = muVec(2:nyqIndx);
+yData1 = Nmin_opt(plotPtIndxs,:);
+yData2 = Nmin_form(2:end,:);
+a = head.a;
+c = getSoundSpeed();
+save(fullfile(dataPath,'Plot Data',[plotDataFileName,'.mat']),'xData1',...
+    'xData2','yData1','yData2','a','c');
+
+clearvars xData1 xData2 yData1 yData2 a c

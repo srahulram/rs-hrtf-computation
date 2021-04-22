@@ -152,6 +152,23 @@ plotFileName = 'N_vs_mu_rho_and_Tc_grayscale'; % CHANGE AS NEEDED
 
 exportFigure(fig1,fullfile(plotsPath,'Computation',[plotFileName,'.eps']))
 
+%% (Optional) Export plot data
+%
+% This is for generating plots using another piece of software (e.g.,
+% Mathematica)
+
+% Specify file name for exporting plot data
+plotDataFileName = 'N_vs_mu_rho_and_Tc_plotdata'; % CHANGE AS NEEDED
+
+xData = muVec.';
+yData = finalPlotData;
+a = head.a;
+c = getSoundSpeed();
+save(fullfile(dataPath,'Plot Data',[plotDataFileName,'.mat']),'xData',...
+    'yData','a','c');
+
+clearvars xData yData a c
+
 %% Observations
 %
 % - For a fixed Tc, N increases with increasing mu and decreasing rho.
