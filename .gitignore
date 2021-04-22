@@ -10,6 +10,7 @@ Software/MATLAB/dependencies/*/
 # Data Files
 Data/*/
 !Data/Computation
+!Data/Plot Data
 
 # Plot Files
 Plots/*/
